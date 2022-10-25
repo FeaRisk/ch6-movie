@@ -20,7 +20,7 @@ function Detail() {
   const { id } = useParams();
 
   const API_URL = "https://api.themoviedb.org/3";
-  const API_KEY = "15a77a373cab542d1f99af813fbc9979";
+  const API_KEY = "ae4dbdc73a2bf042cb271a0b322631d5";
   const noPicture =
     "https://upload.wikimedia.org/wikipedia/commons/f/f9/No-image-available.jpg";
   const noData =
@@ -116,7 +116,7 @@ function Detail() {
         />
         <div className="absolute w-1/2 top-[25%] p-5 ml-5">
           <h1 className="text-5xl font-bold text-white">{details.title}</h1>
-          <div className="flex pt-4">
+          <div className="flex">
             {details.genres &&
               details.genres.map((item, index) => {
                 return (
@@ -126,20 +126,20 @@ function Detail() {
                 );
               })}
           </div>
-          <p className="text-white pt-8 pl-1 font-semibold">
+          <p className="text-white pt-4 pl-1 font-semibold">
             Release at {details.release_date}
           </p>
-          <p className="text-white text-base font-normal pt-3 pl-1">
+          <p className="text-white text-base font-normal pl-1">
             {truncateString(details.overview, 400)}
           </p>
-          <div className="flex pt-5 pl-1 text-base items-center">
-            <BsStar className="text-yellow-500" />
+          <div className="flex pt-5 pl-1 ">
+            <BsStar className="text-yellow-500 mt-1" />
             <p className="text-white ml-4">
               {Math.round(details.vote_average)} / 10
             </p>
           </div>
-          <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : ''}>
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-10 rounded-full inline-flex items-center">
+          <a href={video ? `https://www.youtube.com/watch?v=${video.key}` : "https://www.youtube.com/watch?v=undefined"}>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 ml-1 mt-7 rounded-full inline-flex items-center">
               <AiOutlinePlayCircle className="mr-2" />
               <span>Watch Trailer</span>
             </button>
@@ -171,8 +171,8 @@ function Detail() {
                     }
                     alt={item.name}
                   />
-                  <h1 className="pt-4 pb-1 font-bold text-xl">{item.name}</h1>
-                  <h2 className="text-sm text-gray-500">{item.character}</h2>
+                  <h1 className="pt-4 font-bold text-xl">{item.name}</h1>
+                  <h2 className="text-xs text-gray-500">{item.character}</h2>
                 </div>
               </SwiperSlide>
             ))
@@ -190,35 +190,28 @@ function Detail() {
           review.map((item, index) => (
             <div className="max-w-lg h-full" key={index}>
               <div className="border border-gray-400 rounded-lg p-4 flex flex-col justify-between leading-normal">
-                <div className="mb-8">
-                  <p className="text-sm text-gray-600 flex items-center">
-                    <BsStar className="text-yellow-500" />
-                    <p className="ml-2 pb-0.5">
+                <div className="mb-2 pt-3">
+                  <img
+                    className="w-20 h-20 rounded-full mx-auto"
+                    src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png"
+                    alt="avatar"
+                  />
+                  <div className="text-gray-900 font-bold text-xl my-3 text-center">
+                    <p>{item.author}</p>
+                  </div>
+                  <p className="text-sm text-gray-600 flex">
+                    <BsStar className="text-yellow-500 mt-1" />
+                    <p className="ml-2">
                       {item.author_details.rating} / 10
                     </p>
                   </p>
-                  <div className="text-gray-900 font-bold text-xl my-3">
-                    <p>{item.author}</p>
-                  </div>
                   <p className="text-gray-700 text-xs text-justify">
                     {item.content}
                   </p>
                 </div>
-                <div className="flex items-center">
-                  <img
-                    className="w-10 h-10 rounded-full mr-4"
-                    src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png"
-                    alt=""
-                  />
-                  <div className="text-sm">
-                    <p className="text-gray-900 leading-none">
-                      {item.author_details.name}
-                    </p>
-                    <p className="text-gray-600 text-xs">
-                      Release at : {item.created_at}
-                    </p>
-                  </div>
-                </div>
+                <p className="text-gray-400 text-xs pt-4">
+                  Release at : {item.created_at}
+                </p>
               </div>
             </div>
           ))

@@ -1,6 +1,8 @@
-import React from "react";
+import React,  { useState } from "react";
+import { Button, Modal } from 'antd';
 
 function Footer() {
+
   return (
     <>
       <footer className="text-center text-white bg-slate-100 mt-10">
@@ -113,6 +115,7 @@ function Footer() {
         <div
           className="text-center text-gray-700 pb-4 mb-3"
         >
+
           © 2022 Copyright :
           <a className="text-gray-800 pl-1 hover:text-gray-500" href="#!">
             Alpin Apriliansyah Mohsa

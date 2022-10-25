@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AllMovies from "./pages/AllMovies";
 import Category from "./pages/Category";
 
+
 import DetailMovie from "./pages/DetailMovie";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
